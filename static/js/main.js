@@ -53,16 +53,6 @@
 	};
 
 
-	// Parallax
-  // var scrollBanner = function () {
-  //   var scrollPos = $(this).scrollTop();
-  //   console.log(scrollPos);
-  //   $('.fh5co-hero-intro').css({
-  //     'opacity' : 1-(scrollPos/300)
-  //   });
-  // }
-
-
 	// Click outside of the Mobile Menu
 	var mobileMenuOutsideClick = function() {
 		$(document).click(function (e) {
@@ -148,13 +138,6 @@
 		});
 	};
 
-	// Fast Click for ( Mobiles/Tablets )
-	var mobileFastClick = function() {
-		if ( isiPad() && isiPhone()) {
-			FastClick.attach(document.body);
-		}
-	};
-
 	// Easy Repsonsive Tabs
 	var responsiveTabs = function(){
 		
@@ -192,66 +175,14 @@
     });
 	};
 
-	// Owl Carousel
-	var owlCrouselFeatureSlide = function() {
-		
-		var owl2 = $('.owl-carousel-2');
-		owl2.owlCarousel({
-				items: 1,
-		    loop: true,
-		    margin: 0,
-		    lazyLoad: true,
-		    responsiveClass: true,
-		    nav: true,
-		    dots: true,
-		    smartSpeed: 500,
-		    navText: [
-		      "<i class='ti-arrow-left owl-direction'></i>",
-		      "<i class='ti-arrow-right owl-direction'></i>"
-	     	],
-		    responsive: {
-		        0: {
-		          items: 1,
-		          nav: true
-		        },
-		        600: {
-		          items: 1,
-		          nav: true,
-		        },
-		        1000: {
-		          items: 1,
-		          nav: true,
-		        }
-	    	}
-		});
-	};
-
-	// MagnificPopup
-	var magnifPopup = function() {
-		$('.image-popup').magnificPopup({
-			type: 'image',
-		  gallery:{
-		    enabled:true
-		  }
-		});
-	};
-
 	$(function(){
-
-		mobileFastClick();
 		responsiveTabs();
 		mobileMenu();
 		mainMenu();
-		magnifPopup();
 		mobileBtnClick();
 		mobileClickSubMenus();
 		mobileMenuOutsideClick();
-		owlCrouselFeatureSlide();
 		windowResize();
 		windowScroll();
-
-
 	});
-
-
 }());

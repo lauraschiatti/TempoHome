@@ -1,0 +1,21 @@
+{% block login_content %}
+<h1>Login</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="login">
+
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <button type="submit">Login</button>
+</form>
+
+<h1>Sign up</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="signup">
+
+    <input type="text" name="username">
+    <input type="text" name="password">
+    <button type="submit">Sign up</button>
+</form>
+{% endblock %}

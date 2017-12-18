@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+    {% load staticfiles %}
+    <header id="fh5co-header-section">
+        <div class="container">
+            <!--<h1 id="fh5co-logo" class="pull-left"><img src="{% static 'images/logo.png' %}" alt="logo" width="200"></h1>-->
+
+            <nav id="fh5co-menu-wrap" role="navigation">
+                <ul class="sf-menu" id="fh5co-primary-menu">
+                    <li><a href="">Home</a></li>
+                    <li><a href="#fh5co-main">About us</a></li>
+                    <li><a href="#fh5co-newsletter">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <aside id="fh5co-hero">
+        <div class="container">
+            <div class="row">
+                <div class="fh5co-hero-wrap">
+                    <div class="fh5co-hero-intro">
+                        <img class="img-responsive" style="margin: 60px auto 0" src="{% static 'images/logo.png' %}" alt="logo" width="500">
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <div id="imaginary_container">
+                                        <div class="input-group stylish-input-group">
+                                            <input type="text" class="form-control input-lg" placeholder="Search" >
+                                            <span class="input-group-addon">
+                                                <button type="submit">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                        <a href="#" class="btn btn-primary btn-lg">Login</a>
+                        <a href="#" class="btn btn-default btn-lg">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div id="fh5co-main">
+        <section id="fh5co-feature">
+            <div class="container">
+                <div class="row fh5co-feature-2">
+                    <h2 class="fh5co-uppercase-heading-sm text-center">About us / Features</h2>
+                    <p>TempoHome is a website designed to help foreign students finding a temporary place to stay while finding the best accommodation for a long run.</p>
+                    <div class="fh5co-spacer fh5co-spacer-md"></div>
+                    <div class="col-md-3 col-sm-6 fh5co-feature-item">
+                        <span class="fh5co-feature-icon fh5co-circle"><i class="ti-gift"></i></span>
+                        <h3 class="text-center fh5co-feature-title h4 text-uppercase">Free HTML5 Template</h3>
+                        <p class="text-center fh5co-feature-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid placeat nobis veritatis neque earum possimus tempora sunt. </p>
+                        <p class="text-center"><a href="#" class="btn btn-primary btn-sm">Read more</a></p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 fh5co-feature-item">
+                        <span class="fh5co-feature-icon fh5co-circle"><i class="ti-mobile"></i></span>
+                        <h3 class="text-center fh5co-feature-title h4 text-uppercase">Mobile First</h3>
+                        <p class="text-center fh5co-feature-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid placeat nobis veritatis neque earum possimus tempora sunt.</p>
+                        <p class="text-center"><a href="#" class="btn btn-primary btn-sm">Read more</a></p>
+                    </div>
+
+                    <div class="clearfix visible-sm-block"></div>
+
+                    <div class="col-md-3 col-sm-6 fh5co-feature-item">
+                        <span class="fh5co-feature-icon fh5co-circle"><i class="ti-pie-chart"></i></span>
+                        <h3 class="text-center fh5co-feature-title h4 text-uppercase">Analytics</h3>
+                        <p class="text-center fh5co-feature-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid placeat nobis veritatis neque earum possimus tempora sunt.</p>
+                        <p class="text-center"><a href="#" class="btn btn-primary btn-sm">Read more</a></p>
+                    </div>
+                    <div class="col-md-3 col-sm-6 fh5co-feature-item">
+                        <span class="fh5co-feature-icon fh5co-circle"><i class="ti-wallet"></i></span>
+                        <h3 class="text-center fh5co-feature-title h4 text-uppercase">Increase Income</h3>
+                        <p class="text-center fh5co-feature-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aliquid placeat nobis veritatis neque earum possimus tempora sunt.</p>
+                        <p class="text-center"><a href="#" class="btn btn-primary btn-sm">Read more</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fh5co-newsletter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
+                        <h2 class="fh5co-uppercase-heading-sm fh5co-no-margin-bottom">Subscribe Newsletter</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, assumenda.</p>
+                        <div class="fh5co-spacer fh5co-spacer-xxs"></div>
+                        <form method="post" action="#">
+                          <div class="form-group">
+                            <label for="email" class="sr-only">Email address</label>
+                            <input type="email" class="form-control input-lg" id="email" placeholder="Email">
+                          </div>
+                          <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="fh5co-footer">
+            <div class="container">
+                <ul class="fh5co-social-icons">
+                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                    <li><a href="#"><i class="ti-facebook"></i></a></li>
+                    <li><a href="#"><i class="ti-github"></i></a></li>
+                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                </ul>
+                <p class="text-muted fh5co-no-margin-bottom text-center"><small>&copy; 2015 <a href="#">Display</a>. All rights reserved. Crafted with love <em>by</em> <a href="http://freehtml5.co" target="_blank">FREEHTML5.co</a> <br> Images by <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

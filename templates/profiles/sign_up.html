@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Sign up</title>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        body{
+            font-size: 1.5em;
+            background-color: #d75d30;
+            color: #fff;
+        }
+        img.img-responsive{
+            margin: 0;
+        }
+        /*html,body{*/
+            /*position: relative;*/
+            /*height: 100%;*/
+        /*}*/
+        .form small, .form a{
+            color: #d75d30;
+            text-decoration: none;
+        }
+
+        .login-container{
+            position: relative;
+            width: 90%;
+            min-height: 80%;
+            margin: 62px auto;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .login-container::before,.login-container::after{
+            content: "";
+            position: absolute;
+            width: 100%;height: 100%;
+            top: 3.5px;left: 0;
+            background: #fff;
+            z-index: -1;
+            -webkit-transform: rotateZ(4deg);
+            -moz-transform: rotateZ(4deg);
+            -ms-transform: rotateZ(4deg);
+            border: 1px solid #ccc;
+
+        }
+
+        .login-container::after{
+            top: 5px;
+            z-index: -2;
+            -webkit-transform: rotateZ(-2deg);
+            -moz-transform: rotateZ(-2deg);
+            -ms-transform: rotateZ(-2deg);
+
+        }
+
+        .form-box input[type="text"], .form-box input[type="email"],.form-box input[type="password"]{
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            height:40px;
+            border: 1px solid #ccc;;
+            background: #fafafa;
+            transition:0.2s ease-in-out;
+
+        }
+
+        @media screen and (max-width: 767px) {
+            .navbar{
+                padding: 15px;
+            }
+
+            .nav li{
+                display: inline-block;
+            }
+
+            .open .dropdown-menu>li>a{
+                color: #fff;
+            }
+
+            .login-container{
+                width: 84%;
+                margin: 10% 8%;
+                padding: 25px;
+            }
+
+            .login-container img{
+                width: 200px;
+            }
+
+            .footer{
+                padding-top: 40px;
+                text-align: center;
+            }
+
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% load staticfiles %}
+    <div class="login-container">
+        <a href="#">
+            <img class="img-responsive" src="{% static 'images/logo.png' %}" alt="logo" width="260">
+        </a>
+        <div class="form-box">
+            <form method="post">
+                {% csrf_token %}
+
+                 <div class="form-group row {% if form.name.errors %}has-danger{% endif %}">
+                    <label for="id_name" class="col-sm-4 col-form-label col-form-label-lg">Name</label>
+                    <div class="col-sm-8">
+                        {{ form.username }}
+                        {% if form.name.errors %}
+                            <div class="form-control-feedback">
+                               {% for error in form.name.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Sign up
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

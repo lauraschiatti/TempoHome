@@ -6,20 +6,22 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     # auth related information about the user (username, password, email, first_name, last_name)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User,  on_delete=models.CASCADE) # extend default Djando User model using a One-To-One Link
+
     # non-auth related information about the user
-    description = models.CharField(max_length=255)
+    picture = models.FileField()
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    nationality = models.CharField(max_length=20)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
+    nationality = models.CharField(max_length=100)
     passport_number = models.CharField(max_length=20)
-    phone_number = models.CharField(max_length=20)
-    image = models.ImageField()
+    passport_file = models.ImageField()
     ROLE_CHOICES = (
         ('host', 'Host'),
         ('guest', 'Guest'),
     )
-    role = models.CharField(max_length=5, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=5, choices=ROLE_CHOICES, default='guest')
+    phone_number = models.CharField(max_length=20)
+    description = models.CharField(max_length=200)

@@ -10,7 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE) # extend default Djando User model using a One-To-One Link
 
     # non-auth related information about the user
-    picture = models.FileField()
+    picture = models.ImageField()
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -18,7 +18,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
     nationality = models.CharField(max_length=100)
     passport_number = models.CharField(max_length=20)
-    passport_file = models.ImageField()
+    passport_file = models.FileField()
     ROLE_CHOICES = (
         ('host', 'Host'),
         ('guest', 'Guest'),

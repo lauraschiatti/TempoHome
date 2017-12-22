@@ -23,9 +23,9 @@ class ProfileForm(ModelForm):
             'gender': Select(attrs={'class': 'form-control form-control-danger', 'required': True}),
             'nationality': TextInput(attrs={'class': 'form-control form-control-danger', 'required': True}),
             'passport_number': TextInput(attrs={'class': 'form-control form-control-danger', 'required': True}),
-            'passport_file': FileInput(attrs={'class': 'form-control form-control-danger', 'accept':'application/pdf', 'required': True}),
-            'phone_number': TextInput(attrs={'class': 'form-control form-control-danger', 'accept': 'image/*', 'required': True}),
-            'picture': FileInput(attrs={'class': 'form-control form-control-danger', 'required': True}),
+            'passport_file': FileInput(attrs={'class': 'form-control form-control-danger', 'accept':'application/pdf image/*', 'required': True}),
+            'phone_number': TextInput(attrs={'class': 'form-control form-control-danger', 'required': True}),
+            'picture': FileInput(attrs={'class': 'form-control form-control-danger', 'accept': 'image/*', 'required': True}),
             'role': Select(attrs={'class': 'form-control form-control-danger', 'required': True}),
             'description': Textarea(attrs={'class': 'form-control form-control-danger', 'placeholder': 'Let us know your spoken languages, hobbies and related stuff about you', 'rows': 5, 'required': True}),
         }

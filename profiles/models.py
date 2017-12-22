@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     # auth related information about the user (username, password, email, first_name, last_name)
-    user = models.OneToOneField(User,  on_delete=models.CASCADE) # extend default Djando User model using a One-To-One Link
+    # on_delete=models.CASCADE Automatically deletes related records when the related instance is removed
+    user = models.OneToOneField(User, on_delete=models.CASCADE) # extend default Djando User model using a One-To-One Link
 
     # non-auth related information about the user
     picture = models.FileField()

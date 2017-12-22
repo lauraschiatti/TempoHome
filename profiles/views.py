@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 
 from .forms import *
 
@@ -31,6 +32,11 @@ def sign_up(request):
             # Save new profile
             new_profile.save()
 
+            # username = form.cleaned_data.get('username')
+            # raw_password = form.cleaned_data.get('password1')
+            # user = authenticate(username=username, password=raw_password)
+            # login(request, user)
+
             # redirect to a new URL:
             return HttpResponseRedirect('/users/')
 
@@ -40,3 +46,28 @@ def sign_up(request):
         profile_form = ProfileForm()
 
     return render(request, 'profiles/sign_up.html', {'user_form': user_form, 'profile_form': profile_form})
+
+def authentication(request):
+    # redirect back if authenticated
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/')
+
+    if request.method == 'POST':
+        # post data
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
+
+        # check if credentials match with a registered user
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # correct username and password, so login the user
+            login(request, user)
+            # redirect to a success page
+            return HttpResponseRedirect('/')
+        else:
+            # return an 'invalid login' error message
+            message = 'Username and password were incorrect.'
+            return render(request, 'profiles/login.html', {'message': message})
+
+    return render(request, 'profiles/login.html', {})
+

@@ -650,8 +650,8 @@ textarea {
   color: #ffffff;
 }
 #fh5co-hero .fh5co-hero-wrap .btn:hover, #fh5co-hero .fh5co-hero-wrap .btn:active, #fh5co-hero .fh5co-hero-wrap .btn:focus {
-  background: #d75d30;
-  border-color: #d75d30;
+  /*background: #d75d30;*/
+  /*border-color: #d75d30;*/
 }
 
 body.inner-page #fh5co-hero {
@@ -913,8 +913,8 @@ Components
 .btn-danger:hover,
 .btn-danger:active,
 .btn-danger:focus {
-  background: #282e3c;
-  color: #ffffff;
+  /*background: #282e3c;*/
+  /*color: #ffffff;*/
 }
 
 .form-control {

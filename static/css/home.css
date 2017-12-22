@@ -1,0 +1,17 @@
+.dropdown-menu{
+    width: 250px;
+    margin: 0;
+    padding: 15px
+}
+
+#fh5co-menu-wrap .sf-menu a.logout {
+    padding: 10px;
+    margin-bottom: 0;
+    color: #fff !important;
+}
+
+#fh5co-menu-wrap .sf-menu a.profile {
+    padding: 0;
+    color: #66512c;
+    font-weight: lighter;;
+}

@@ -214,12 +214,12 @@ textarea {
   color: #2e2e2e;
   border-bottom: none !important;
 }
-#fh5co-header-section.fh5co-scrolled #fh5co-menu-wrap .sf-menu a:hover {
-  color: #d75d30 !important;
-}
-#fh5co-header-section.fh5co-scrolled #fh5co-menu-wrap .sf-menu li.active > a {
-  color: #d75d30 !important;
-}
+/*#fh5co-header-section.fh5co-scrolled #fh5co-menu-wrap .sf-menu a:hover {*/
+  /*color: #d75d30 !important;*/
+/*}*/
+/*#fh5co-header-section.fh5co-scrolled #fh5co-menu-wrap .sf-menu li.active > a {*/
+  /*color: #d75d30 !important;*/
+/*}*/
 #fh5co-header-section.fh5co-scrolled #fh5co-menu-wrap > .sf-menu > li > a {
   padding-top: 2em;
   padding-bottom: 2em;

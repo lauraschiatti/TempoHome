@@ -1,7 +1,7 @@
 .dropdown-menu{
-    width: 250px;
+    width: auto;
     margin: 0;
-    padding: 15px
+    padding: 15px;
 }
 
 #fh5co-menu-wrap .sf-menu a.logout {
@@ -13,5 +13,5 @@
 #fh5co-menu-wrap .sf-menu a.profile {
     padding: 0;
     color: #66512c;
-    font-weight: lighter;;
+    font-weight: lighter;
 }

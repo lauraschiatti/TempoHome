@@ -1295,3 +1295,10 @@ a > img.fh5co-align-center {
     border:0;
     background:transparent;
 }
+
+/* Text overflow */
+body p{
+     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

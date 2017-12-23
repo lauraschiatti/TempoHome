@@ -25,16 +25,14 @@
                                 <strong>Hi, {{ user.username }}</strong>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <img src="{{ user.profile.picture.url }}" alt="picture" width="60">
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="text-left"><strong>{{ user.get_full_name }}</strong></p>
-                                            <p class="text-left">{{ user.email }}</p>
-                                            <small><a href="#" class="profile"><span class="glyphicon glyphicon-user"></span>View profile</a></small>
-                                        </div>
+                                <li class="row">
+                                    <div class="col-sm-4">
+                                        <img src="{{ user.profile.picture.url }}" alt="picture" width="60">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p><strong>{{ user.get_full_name }}</strong></p>
+                                        <p>{{ user.email }}</p>
+                                        <small><a href="#" class="profile"><span class="glyphicon glyphicon-user"></span>View profile</a></small>
                                     </div>
                                 </li>
                                 <li class="divider"></li>

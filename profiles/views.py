@@ -70,4 +70,3 @@ def authentication(request):
             return render(request, 'profiles/login.html', {'message': message})
 
     return render(request, 'profiles/login.html', {})
-

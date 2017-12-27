@@ -34,18 +34,18 @@
 
                     <br><br>
 
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-striped">
-                            <thead>
-                                <th>Address</th>
-                                <th>Description</th>
-                                <th>Rules</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </thead>
-                            <tbody>
-                                {% if object_list %}
-                                    {% for room in object_list %}
+                    {% if room_list %}
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Address</th>
+                                    <th>Description</th>
+                                    <th>Rules</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    {% for room in room_list %}
                                         <tr>
                                             <td>{{ room.address }}</td>
                                             <td>{{ room.description }}</td>
@@ -58,12 +58,12 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                {% else %}
-                                  <p>There are no rooms.</p>
-                                {% endif %}
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p>There are no stored rooms.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

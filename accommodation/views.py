@@ -31,7 +31,7 @@ def create_room(request):
                 picture = Picture(picture=form['picture'], room=new_room)
                 picture.save()
 
-            return HttpResponseRedirect('accommodation/rooms')
+            return HttpResponseRedirect('/accommodation/rooms')
         else:
             print room_form.errors, picture_formset.errors
 

@@ -32,13 +32,13 @@ def sign_up(request):
             # Save new profile
             new_profile.save()
 
-            # username = form.cleaned_data.get('username')
-            # raw_password = form.cleaned_data.get('password1')
-            # user = authenticate(username=username, password=raw_password)
-            # login(request, user)
+            username = user_form.cleaned_data.get('username')
+            raw_password = user_form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
 
             # redirect to a new URL:
-            return HttpResponseRedirect('/users/')
+            return HttpResponseRedirect('/accommodation/dashboard')
 
     # if a GET (or any other method) we'll create a blank form
     else:

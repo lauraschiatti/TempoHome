@@ -1,0 +1,71 @@
+{% extends "base-dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>Rooms</title>
+{% endblock %}
+
+{% block sidebar %}
+    <li>
+        <a href="{% url 'accommodation:dashboard' %}">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="active">
+        <a href="{% url 'accommodation:rooms_list' %}">
+            <i class="glyphicon glyphicon-home"></i>
+            <p>Accommodation</p>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Rooms</h4>
+                    <p class="category">Saved Rooms</p>
+                </div>
+                <div class="content">
+                    <a href="{% url 'accommodation:new_room' %}" class="btn btn-primary">Add New Room</a>
+
+                    <br><br>
+
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Address</th>
+                                <th>Description</th>
+                                <th>Rules</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </thead>
+                            <tbody>
+                                {% if object_list %}
+                                    {% for room in object_list %}
+                                        <tr>
+                                            <td>{{ room.address }}</td>
+                                            <td>{{ room.description }}</td>
+                                            <td>{{ room.rules }}</td>
+                                            <td>{{ room.status }}</td>
+                                            <td>
+                                               <a class="btn-link" href="{% url 'accommodation:new_room' %}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                               <a class="btn-link" href="{% url 'accommodation:new_room' %}"><i class="glyphicon glyphicon-pencil"></i></a>
+                                               <a class="btn-link" href="{% url 'accommodation:new_room' %}"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                  <p>There are no rooms.</p>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

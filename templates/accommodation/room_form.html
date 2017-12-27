@@ -1,0 +1,114 @@
+{% extends "base-dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>New Room</title>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .display, .display:hover{
+            color: #da354c;
+            float: right;
+        }
+    </style>
+{% endblock %}
+
+{% block sidebar %}
+    <li>
+        <a href="">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="active">
+        <a href="">
+            <i class="glyphicon glyphicon-home"></i>
+            <p>Accommodation</p>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Rooms > New</h4>
+                    <p class="category">Create New Room</p>
+                </div>
+                <div class="content">
+                    <div class="form">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            {% for field in room_form %}
+                                <div class="form-group {% if field.errors %}has-error has-feedback{% endif %}">
+                                    <label class="control-label col-sm-2" for="{{ field.id_for_label }}">
+                                        {{ field.label_tag }}
+                                        {% if field.html_name != 'rules' %}
+                                            <small class="text-danger">*</small>
+                                        {% endif %}
+                                    </label>
+                                    <div class="col-sm-8">
+                                        {{ field }}
+                                        <div class="row">
+                                            <small class="text-danger"> {{ field.errors }} </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            {% for picture_form in picture_formset.forms %}
+                                <div class="picture-formset">
+                                    <div class="form-group{% if field.errors %}has-error has-feedback{% endif %}">
+                                        <label class="control-label col-sm-2" for="{{ field.id_for_label }}">
+                                            Picture:
+                                            <small class="text-danger">*</small>
+                                        </label>
+
+                                        <div class="col-sm-8">
+                                            {{ picture_form.picture }}
+                                            <div class="row">
+                                                <small class="text-danger"> {{ field.errors }} </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            {{ picture_formset.management_form }} <!-- used by Django to manage the forms within the formset. -->
+
+                            <div class="row">
+                                <div class="col-xs-12"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a type="button" class="btn btn-default pull-right" href="{% url 'accommodation:rooms_list' %}" style="margin-left: 10px"> Cancel </a>
+                                    <button type="submit" class="btn btn-primary pull-right"> Save </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script>
+        $(function() {
+            $('.picture-formset').formset({
+                addText: '<i class="glyphicon glyphicon-plus"></i> Picture',
+                deleteText: '<i class="glyphicon glyphicon-trash"></i>',
+                addCssClass: 'add-row btn btn-success',
+                deleteCssClass: 'display'
+            });
+        })
+    </script>
+{% endblock %}
+

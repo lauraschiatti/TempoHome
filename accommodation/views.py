@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
-from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 
 from .models import Room, Picture
@@ -10,7 +9,6 @@ from .forms import RoomForm, PictureForm
 def dashboard(request):
     return render(request, 'accommodation/dashboard.html')
 
-# @login_required
 def create_room(request):
     # formsets allow the user to store several pictures at once
     PicureFormSet = modelformset_factory(Picture, form=PictureForm)
@@ -45,3 +43,7 @@ def create_room(request):
 
 class RoomList(ListView):
    model = Room
+
+   def get_queryset(self):
+       user_rooms = Room.objects.filter(user=self.request.user)
+       return user_rooms

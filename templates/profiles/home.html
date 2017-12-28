@@ -32,11 +32,11 @@
                                     <div class="col-sm-8">
                                         <p><strong>{{ user.get_full_name }}</strong></p>
                                         <p>{{ user.email }}</p>
-                                        <small><a href="#" class="profile"><span class="glyphicon glyphicon-user"></span>View profile</a></small>
+                                        <span><a href="{% url 'profiles:get_profile' %}" class="profile text-danger"><i class="ti-settings"></i> &nbsp; Profile</a></span>
                                     </div>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="{% url 'profiles:logout' %}" class="btn btn-danger btn-sm logout">Logout</a></li>
+                                <li><a href="{% url 'profiles:logout' %}" class="btn btn-danger logout"><i class="glyphicon glyphicon-log-out"></i> &nbsp; Logout</a></li>
                             </ul>
                         </li>
                     {% endif %}

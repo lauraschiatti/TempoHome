@@ -1,0 +1,60 @@
+{% extends "base-dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>Rooms</title>
+{% endblock %}
+
+{% block sidebar %}
+    <li>
+        <a href="{% url 'accommodation:dashboard' %}">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="active">
+        <a href="{% url 'accommodation:rooms_list' %}">
+            <i class="glyphicon glyphicon-home"></i>
+            <p>Accommodation</p>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Room</h4>
+                    <p class="category">Detailed info</p>
+                </div>
+                <div class="content">
+                    <a href="{% url 'accommodation:rooms_list' %}" class="btn btn-primary">Back</a>
+
+                    <br><br>
+
+                    <p><strong>Address: </strong>{{ room.address }}</p>
+                    <p><strong>Description: </strong>{{ room.description }}</p>
+                    <p><strong>Rules: </strong>{{ room.rules }}</p>
+                    <p><strong>Status: </strong>{{ room.get_status_display }}</p>
+
+                    <hr>
+
+                    <h4 class="title">Room in pictures</h4>
+                    <br>
+
+                    <div class="row">
+                        {% for picture in room.picture_set.all %}
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img src="{{ picture.picture.url }}" alt="picture" width="200">
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

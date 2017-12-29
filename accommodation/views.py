@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.forms import modelformset_factory
 
 from .models import Room, Picture
@@ -29,9 +30,7 @@ def create_room(request):
                 picture = Picture(picture=form['picture'], room=new_room)
                 picture.save()
 
-            return HttpResponseRedirect('/accommodation/rooms')
-        else:
-            print room_form.errors, picture_formset.errors
+            return HttpResponseRedirect('/account/rooms')
 
     # return blank forms
     else:
@@ -47,3 +46,6 @@ class RoomList(ListView):
    def get_queryset(self):
        user_rooms = Room.objects.filter(user=self.request.user)
        return user_rooms
+
+class RoomDetail(DetailView):
+   model = Room

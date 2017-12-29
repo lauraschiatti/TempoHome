@@ -18,5 +18,5 @@ class Room(models.Model):
 
 
 class Picture(models.Model):
-    picture = models.ImageField(upload_to='rooms')
+    picture = models.ImageField()
     room = models.ForeignKey(Room)

@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.forms import modelformset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.forms import modelformset_factory
+from django.views.generic.edit import DeleteView
+from django.core.urlresolvers import reverse_lazy
 
 from .models import Room, Picture
 from .forms import RoomForm, PictureForm
@@ -49,3 +51,7 @@ class RoomList(ListView):
 
 class RoomDetail(DetailView):
    model = Room
+
+class RoomDelete(DeleteView):
+   model = Room
+   success_url = reverse_lazy('accommodation:rooms_list')

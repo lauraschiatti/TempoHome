@@ -1,0 +1,50 @@
+{% extends "base-dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>Rooms</title>
+{% endblock %}
+
+{% block sidebar %}
+    <li>
+        <a href="{% url 'accommodation:dashboard' %}">
+            <i class="ti-panel"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li class="active">
+        <a href="{% url 'accommodation:rooms_list' %}">
+            <i class="glyphicon glyphicon-home"></i>
+            <p>Accommodation</p>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Rooms</h4>
+                    <p class="category">Delete Room</p>
+                </div>
+                <div class="content">
+                   <form method="post">
+                       {% csrf_token %}
+                       <div class="row">
+                           <div class="col-xs-12 col-md-6 col-md-push-3">
+                               <p class="text-center"><i class="glyphicon glyphicon-trash"></i> You are about to delete. Do you want to proceed?</p>
+                               <hr>
+                               <p class="text-center">
+                                  <input type="submit" class="btn btn-danger" value="Delete" style="margin-left: 10px">
+                                  <a type="button" class="btn btn-default" href="{% url 'accommodation:rooms_list' %}"> Cancel </a>
+                               </p>
+                           </div>
+                       </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

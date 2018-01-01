@@ -10,7 +10,6 @@ class Room(models.Model):
     rules = models.CharField(max_length=200, blank=True)
     STATUS_CHOICES = (
         ('F', 'Free'),
-        ('R', 'Revision'),
         ('O', 'Occupied'),
     )
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='F')

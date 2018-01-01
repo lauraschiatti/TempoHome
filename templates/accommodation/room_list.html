@@ -16,7 +16,7 @@
     <li class="active">
         <a href="{% url 'accommodation:rooms_list' %}">
             <i class="glyphicon glyphicon-home"></i>
-            <p>Accommodation</p>
+            <p>My Rooms</p>
         </a>
     </li>
 {% endblock %}
@@ -39,13 +39,25 @@
                             <table class="table table-striped">
                                 <thead>
                                     <th>Address</th>
-                                    <th>Status</th>
                                 </thead>
                                 <tbody>
                                     {% for room in room_list %}
                                         <tr>
-                                            <td>{{ room.address }}</td>
-                                            <td>{{ room.status }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        {% if room.status != 'F' %}
+                                                            <div class="img-circle status-red" data-toggle="tooltip" title="Occupied">8</div>
+                                                        {% else %}
+                                                            <div class="img-circle status-green" data-toggle="tooltip" title="Free">8</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-m-9">
+                                                        {{ room.address }}
+                                                    </div>
+                                                </div>
+                                            </td>
+
                                             <td>
                                                <a class="btn-link" href="{% url 'accommodation:room_detail' room.id %}"><i class="glyphicon glyphicon-eye-open"></i></a>
                                                <a class="btn-link" href="#"><i class="glyphicon glyphicon-pencil"></i></a>
@@ -63,4 +75,12 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 {% endblock %}

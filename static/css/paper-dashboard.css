@@ -2782,3 +2782,15 @@ body {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
+.status-red {
+  background-color: #d75452;
+  width: 20px;
+  color: #d75452;
+}
+
+.status-green {
+  background-color: #5fb75e;
+  width: 20px;
+  color: #5fb75e;
+}

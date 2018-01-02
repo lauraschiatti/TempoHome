@@ -21,5 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('profiles.urls', namespace='profiles')),
-    url(r'account/', include('accommodation.urls', namespace='accommodation')),
+    url(r'', include('accommodation.urls', namespace='accommodation')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # helper function to return a URL pattern for serving files

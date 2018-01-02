@@ -19,10 +19,5 @@ class Profile(models.Model):
     nationality = models.CharField(max_length=100)
     passport_number = models.CharField(max_length=20)
     passport_file = models.FileField()
-    ROLE_CHOICES = (
-        ('host', 'Host'),
-        ('guest', 'Guest'),
-    )
-    role = models.CharField(max_length=5, choices=ROLE_CHOICES, default='guest')
     phone_number = models.CharField(max_length=20)
     description = models.CharField(max_length=200)

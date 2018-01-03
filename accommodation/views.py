@@ -56,17 +56,48 @@ class RoomDelete(DeleteView):
    model = Room
    success_url = reverse_lazy('accommodation:rooms_list')
 
+# global variables
+q = ''
+room_list = ''
 def search(request):
    # check that 'q' exists in request.GET
    if 'q' in request.GET:
+       global q # modify global copy of q
        q = request.GET.get('q')
-
-       # Get available rooms whose address contains q, without being case-sensitive.
+       # get available rooms whose address contains q, without being case-sensitive.
+       global room_list # modify global copy of room_list
        room_list = Room.objects.filter(address__icontains=q)
    else:
+       global room_list  # modify global copy of room_list
        room_list = Room.objects.all()
 
    return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q})
+
+def post_request(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # room info
+        room_id = request.POST.get('room')
+        room = Room.objects.get(pk=room_id)
+
+        # parse dates to required format for fields DateField typed
+        daterange = request.POST.get('daterange')
+        start_date, end_date = daterange.split("-")
+
+        start_date = start_date.replace('/', '-')
+        year, month, day = start_date.split("-")
+        start_date = date(int(year), int(month), int(day))
+
+        end_date = end_date.replace('/', '-')
+        year, month, day = end_date.split("-")
+        end_date = date(int(year), int(month), int(day))
+
+        # save new request
+        new_request = Request(start_date=start_date, end_date=end_date, user=request.user, room=room)
+        new_request.save()
+
+        message = "Your request sent successfully. Room's owner will get in touch with you as soon as possible"
+        return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q, 'message': message, 'request': new_request})
 
 
 

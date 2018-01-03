@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^account/room/(?P<pk>\d+)$', RoomDetail.as_view(), name='room_detail'),
     url(r'^account/room/delete/(?P<pk>\d+)$', RoomDelete.as_view(), name='room_delete'),
     url(r'^search', views.search, name="search"),
+    url(r'^send-request', views.post_request, name="post_request"),
 ]

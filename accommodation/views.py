@@ -5,8 +5,9 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
 from django.core.urlresolvers import reverse_lazy
+from datetime import date
 
-from .models import Room, Picture
+from .models import Room, Picture, Request
 from .forms import RoomForm, PictureForm
 
 def dashboard(request):
@@ -41,7 +42,6 @@ def create_room(request):
 
     return render(request, 'accommodation/room_form.html', {'room_form': room_form, 'picture_formset': picture_formset})
 
-
 class RoomList(ListView):
    model = Room
 
@@ -55,3 +55,25 @@ class RoomDetail(DetailView):
 class RoomDelete(DeleteView):
    model = Room
    success_url = reverse_lazy('accommodation:rooms_list')
+
+def search(request):
+   # check that 'q' exists in request.GET
+   if 'q' in request.GET:
+       q = request.GET.get('q')
+
+       # Get available rooms whose address contains q, without being case-sensitive.
+       room_list = Room.objects.filter(address__icontains=q)
+   else:
+       room_list = Room.objects.all()
+
+   return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q})
+
+
+
+
+
+
+
+
+
+

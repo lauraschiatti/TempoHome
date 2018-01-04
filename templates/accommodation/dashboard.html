@@ -6,21 +6,6 @@
     <title>Dashboard</title>
 {% endblock %}
 
-{% block sidebar %}
-    <li class="active">
-        <a href="{% url 'accommodation:dashboard' %}">
-            <i class="ti-panel"></i>
-            <p>Dashboard</p>
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'accommodation:rooms_list' %}">
-            <i class="glyphicon glyphicon-home"></i>
-            <p>My Rooms</p>
-        </a>
-    </li>
-{% endblock %}
-
 {% block content %}
     <div class="row">
         <div class="col-lg-3 col-sm-6">

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
     <style>
-        a.navbar-brand:hover{
+        a.navbar-brand:hover, a.navbar-brand:focus, a.navbar-brand:active{
             border-bottom: 0;
         }
     </style>
@@ -21,7 +21,7 @@
 {% block content %}
     <nav class="navbar navbar-static-top">
         <div class="container">
-            <a href="#" class="navbar-brand">
+            <a href="{% url 'profiles:home' %}" class="navbar-brand">
                 <img src="{% static 'images/logo.png' %}" alt="logo" width="170">
             </a>
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse"></button>

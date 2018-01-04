@@ -1,0 +1,70 @@
+{% extends "base-dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>New Room</title>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .display, .display:hover{
+            color: #da354c;
+            float: right;
+            margin-right: 180px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Requests</h4>
+                    <p class="category">Update Request</p>
+                </div>
+                <div class="content">
+                    <div class="form">
+                        <form class="form-horizontal" method="post">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="control-label col-md-2" style="margin-top: 7px"><strong>Status</strong></label>
+                                    <div class="col-md-6">
+                                        {{ form.status }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a type="button" class="btn btn-default pull-right" href="{% url 'accommodation:rooms_list' %}" style="margin-left: 10px"> Cancel </a>
+                                    <button type="submit" class="btn btn-primary pull-right"> Save </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script>
+        $(function() {
+            $('.picture-formset').formset({
+                addText: '<i class="glyphicon glyphicon-plus"></i> Picture',
+                deleteText: '<i class="glyphicon glyphicon-trash"></i>',
+                addCssClass: 'add-row btn btn-success',
+                deleteCssClass: 'display'
+            });
+
+            $("#id_status").addClass("form-control");
+        })
+    </script>
+{% endblock %}
+

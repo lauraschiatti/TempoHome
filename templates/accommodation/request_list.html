@@ -6,59 +6,54 @@
     <title>Rooms</title>
 {% endblock %}
 
-{% block sidebar %}
-    <li>
-        <a href="{% url 'accommodation:dashboard' %}">
-            <i class="ti-panel"></i>
-            <p>Dashboard</p>
-        </a>
-    </li>
-    <li class="active">
-        <a href="{% url 'accommodation:rooms_list' %}">
-            <i class="glyphicon glyphicon-home"></i>
-            <p>My Rooms</p>
-        </a>
-    </li>
-{% endblock %}
-
 {% block content %}
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Rooms</h4>
-                    <p class="category">Saved Rooms</p>
+                    <h4 class="title">Requests</h4>
+                    <p class="category">Received Requests</p>
                 </div>
                 <div class="content">
-                    <a href="{% url 'accommodation:new_room' %}" class="btn btn-primary">Add New Room</a>
-
-                    <br><br>
-
-                    {% if room_list %}
+                    {% if request_list %}
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <th>Address</th>
+                                    <th>Guest</th>
+                                    <th>From</th>
+                                    <th>To</th>
                                 </thead>
                                 <tbody>
-                                    {% for room in room_list %}
+                                    {% for request in request_list %}
                                         <tr>
                                             <td>
-                                                {{ room.address }}
+                                                <div class="col-md-1">
+                                                    <a class="btn-link" href="{% url 'accommodation:request_edit' request.id %}"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    {% if request.status == 'P' %}
+                                                        <div class="img-circle status-red" data-toggle="tooltip" title="Pending">8</div>
+                                                    {% else %}
+                                                        <div class="img-circle status-green" data-toggle="tooltip" title="Approved">8</div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-md-9">
+                                                    {{ request.room.address }}
+                                                </div>
                                             </td>
-
                                             <td>
-                                               <a class="btn-link" href="{% url 'accommodation:room_detail' room.id %}"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                               <a class="btn-link" href="#"><i class="glyphicon glyphicon-pencil"></i></a>
-                                               <a class="btn-link" href="{% url 'accommodation:room_delete' room.id %}"><i class="glyphicon glyphicon-trash"></i></a>
+                                                <a href="{% url 'profiles:get_profile' request.user %}" data-toggle="tooltip" data-placement="bottom" title="{{ request.user }}"><i class="glyphicon glyphicon-user"></i></a>
                                             </td>
+                                            <td>{{ request.start_date|date:"d M Y" }}</td>
+                                            <td>{{ request.end_date|date:"d M Y" }}</td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     {% else %}
-                        <p>There are no stored rooms.</p>
+                        <p>There are no received requests.</p>
                     {% endif %}
                 </div>
             </div>

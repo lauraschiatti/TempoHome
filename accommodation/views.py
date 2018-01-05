@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from datetime import date
 
 from .models import Room, Picture, Request
-from .forms import RoomForm, PictureForm
+from .forms import RoomForm, PictureForm, RequestForm
 
 def dashboard(request):
     return render(request, 'accommodation/dashboard.html')
@@ -109,4 +109,4 @@ class RequestList(ListView):
 class RequestUpdate(UpdateView):
    model = Request
    success_url = reverse_lazy('accommodation:requests_list')
-   fields = ['status']
+   form_class = RequestForm

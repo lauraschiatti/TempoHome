@@ -1,6 +1,6 @@
 from django.forms import ModelForm, TextInput, Select, Textarea, FileInput
 
-from .models import Room, Picture
+from .models import Room, Picture, Request
 
 class RoomForm(ModelForm):
     class Meta:
@@ -10,7 +10,6 @@ class RoomForm(ModelForm):
             'address': TextInput(attrs={'class': 'form-control form-control-danger', 'required': True}),
             'description': Textarea(attrs={'class': 'form-control form-control-danger', 'rows': 3, 'required': True}),
             'rules': Textarea(attrs={'class': 'form-control form-control-danger', 'rows': 3}),
-            'status': Select(attrs={'class': 'form-control form-control-danger', 'required': True}),
         }
 
 class PictureForm(ModelForm):
@@ -19,4 +18,13 @@ class PictureForm(ModelForm):
         fields = ["picture"]
         widgets = {
             'picture': FileInput(attrs={'class': 'form-control form-control-danger', 'accept': 'image/*', 'required': True}),
+        }
+
+class RequestForm(ModelForm):
+    class Meta:
+        model = Request
+        fields = ['status', 'comments']
+        widgets = {
+            'status': Select(attrs={'class': 'form-control form-control-danger', 'required': True}),
+            'comments': Textarea(attrs={'class': 'form-control form-control-danger', 'rows': 3})
         }

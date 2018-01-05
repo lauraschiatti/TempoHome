@@ -2787,10 +2787,12 @@ body {
   background-color: #d75452;
   width: 20px;
   color: #d75452;
+  margin-bottom: 12px;
 }
 
 .status-green {
   background-color: #5fb75e;
   width: 20px;
   color: #5fb75e;
+  margin-bottom: 12px;
 }

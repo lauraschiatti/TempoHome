@@ -6,16 +6,6 @@
     <title>New Room</title>
 {% endblock %}
 
-{% block styles %}
-    <style>
-        .display, .display:hover{
-            color: #da354c;
-            float: right;
-            margin-right: 180px;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
     <div class="row">
         <div class="col-md-12">
@@ -30,11 +20,8 @@
                             {% csrf_token %}
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label class="control-label col-md-2" style="margin-top: 7px"><strong>Status</strong></label>
-                                    <div class="col-md-6">
-                                        {{ form.status }}
-                                    </div>
+                                <div class="col-md-6 col-md-push-3">
+                                    {{ form.as_p }}
                                 </div>
                             </div>
 
@@ -51,20 +38,3 @@
         </div>
     </div>
 {% endblock %}
-
-{% block scripts %}
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-    <script>
-        $(function() {
-            $('.picture-formset').formset({
-                addText: '<i class="glyphicon glyphicon-plus"></i> Picture',
-                deleteText: '<i class="glyphicon glyphicon-trash"></i>',
-                addCssClass: 'add-row btn btn-success',
-                deleteCssClass: 'display'
-            });
-
-            $("#id_status").addClass("form-control");
-        })
-    </script>
-{% endblock %}
-

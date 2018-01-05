@@ -23,30 +23,31 @@
                                     <th>Guest</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th>Comments</th>
                                 </thead>
                                 <tbody>
                                     {% for request in request_list %}
                                         <tr>
-                                            <td>
-                                                <div class="col-md-1">
-                                                    <a class="btn-link" href="{% url 'accommodation:request_edit' request.id %}"><i class="glyphicon glyphicon-pencil"></i></a>
-                                                </div>
-                                                <div class="col-md-2">
+                                            <td class="col-md-4">
+                                                <div class="col-md-3">
                                                     {% if request.status == 'P' %}
                                                         <div class="img-circle status-red" data-toggle="tooltip" title="Pending">8</div>
                                                     {% else %}
                                                         <div class="img-circle status-green" data-toggle="tooltip" title="Approved">8</div>
                                                     {% endif %}
+
+                                                    <a class="btn-link" href="{% url 'accommodation:request_edit' request.id %}"><i class="glyphicon glyphicon-pencil"></i></a>
                                                 </div>
                                                 <div class="col-md-9">
                                                     {{ request.room.address }}
                                                 </div>
                                             </td>
-                                            <td>
-                                                <a href="{% url 'profiles:get_profile' request.user %}" data-toggle="tooltip" data-placement="bottom" title="{{ request.user }}"><i class="glyphicon glyphicon-user"></i></a>
+                                            <td class="col-md-2">
+                                                <a class="text-left" href="{% url 'profiles:get_profile' request.user %}"><i class="glyphicon glyphicon-user"></i> &nbsp; {{ request.user }}</a>
                                             </td>
-                                            <td>{{ request.start_date|date:"d M Y" }}</td>
-                                            <td>{{ request.end_date|date:"d M Y" }}</td>
+                                            <td class="col-md-1">{{ request.start_date|date:"d/m/y" }}</td>
+                                            <td class="col-md-1">{{ request.end_date|date:"d/m/y" }}</td>
+                                            <td class="col-md-4">{{ request.comments }}</td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>

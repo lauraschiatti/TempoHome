@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.forms import modelformset_factory
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from datetime import date
 
@@ -99,12 +99,14 @@ def post_request(request):
         message = "Your request sent successfully. Room's owner will get in touch with you as soon as possible"
         return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q, 'message': message, 'request': new_request})
 
+class RequestList(ListView):
+   model = Request
 
+   def get_queryset(self):
+       user_requests = Request.objects.filter(room__user=self.request.user)
+       return user_requests
 
-
-
-
-
-
-
-
+class RequestUpdate(UpdateView):
+   model = Request
+   success_url = reverse_lazy('accommodation:requests_list')
+   fields = ['status']

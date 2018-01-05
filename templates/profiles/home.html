@@ -32,7 +32,7 @@
                                     <div class="col-sm-8">
                                         <p><strong>{{ user.get_full_name }}</strong></p>
                                         <p>{{ user.email }}</p>
-                                        <span><a href="{% url 'profiles:get_profile' %}" class="profile text-danger"><i class="ti-settings"></i> &nbsp; Profile</a></span>
+                                        <span><a href="{% url 'profiles:get_profile' user.get_username %}" class="profile text-danger"><i class="ti-settings"></i> &nbsp; Account</a></span>
                                     </div>
                                 </li>
                                 <li class="divider"></li>

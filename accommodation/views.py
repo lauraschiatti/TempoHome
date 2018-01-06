@@ -110,3 +110,8 @@ class RequestUpdate(UpdateView):
    model = Request
    success_url = reverse_lazy('accommodation:requests_list')
    form_class = RequestForm
+
+def responses_list(request):
+   user_responses = Request.objects.filter(user=request.user)
+
+   return render(request, 'accommodation/response_list.html', {'responses': user_responses})

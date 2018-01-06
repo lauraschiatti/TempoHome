@@ -11,42 +11,36 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Requests</h4>
-                    <p class="category">Received Requests</p>
+                    <h4 class="title">Responses</h4>
+                    <p class="category">Received Responses</p>
                 </div>
                 <div class="content">
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <th>Address</th>
-                                <th>Guest</th>
                                 <th>From</th>
                                 <th>To</th>
                                 <th>Comments</th>
                             </thead>
                             <tbody>
-                                {% for request in request_list %}
+                                {% for response in responses %}
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="col-md-3">
-                                                {% if request.status == 'P' %}
+                                                {% if response.status == 'P' %}
                                                     <div class="img-circle status-red" data-toggle="tooltip" title="Pending">8</div>
                                                 {% else %}
                                                     <div class="img-circle status-green" data-toggle="tooltip" title="Approved">8</div>
                                                 {% endif %}
-
-                                                <a class="btn-link" href="{% url 'accommodation:request_edit' request.id %}"><i class="glyphicon glyphicon-pencil"></i></a>
                                             </div>
                                             <div class="col-md-9">
-                                                {{ request.room.address }}
+                                                {{ response.room.address }}
                                             </div>
                                         </td>
-                                        <td class="col-md-2">
-                                            <a class="text-left" href="{% url 'profiles:get_profile' request.user %}"><i class="glyphicon glyphicon-user"></i> &nbsp; {{ request.user }}</a>
-                                        </td>
-                                        <td class="col-md-1">{{ request.start_date|date:"d/m/y" }}</td>
-                                        <td class="col-md-1">{{ request.end_date|date:"d/m/y" }}</td>
-                                        <td class="col-md-4">{{ request.comments }}</td>
+                                        <td class="col-md-1">{{ response.start_date|date:"d/m/y" }}</td>
+                                        <td class="col-md-1">{{ response.end_date|date:"d/m/y" }}</td>
+                                        <td class="col-md-4">{{ response.comments }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

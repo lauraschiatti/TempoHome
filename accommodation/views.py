@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from datetime import date
+from django.db.models import Q
 
 from .models import Room, Picture, Request
 from .forms import RoomForm, PictureForm, RequestForm
@@ -66,7 +67,7 @@ def search(request):
        q = request.GET.get('q')
        # get available rooms whose address contains q, without being case-sensitive.
        global room_list # modify global copy of room_list
-       room_list = Room.objects.filter(address__icontains=q)
+       room_list = Room.objects.filter(address__icontains=q).exclude(user=request.user)
    else:
        global room_list  # modify global copy of room_list
        room_list = Room.objects.all()

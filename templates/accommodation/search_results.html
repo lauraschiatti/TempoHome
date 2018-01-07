@@ -10,49 +10,52 @@
 	<link rel="stylesheet" href="{% static 'css/home.css' %}">
     <!-- Include Date Range Picker -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-    <style>
-        a.navbar-brand:hover, a.navbar-brand:focus, a.navbar-brand:active{
-            border-bottom: 0;
-        }
-    </style>
+    <!-- Search Style -->
+	<link rel="stylesheet" href="{% static 'css/search.css' %}">
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar navbar-static-top">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <div id="flipkart-navbar">
         <div class="container">
-            <a href="{% url 'profiles:home' %}" class="navbar-brand">
-                <img src="{% static 'images/logo.png' %}" alt="logo" width="170">
-            </a>
-            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse"></button>
+            <div class="row row1">
+                <ul class="largenav pull-right">
+                    <li class="upper-links"><a class="links" href="{% url 'profiles:home' %}"><i class="glyphicon glyphicon-home"></i> &nbsp; Home</a></li>
+                    <li class="upper-links dropdown"><a class="links"><i class="glyphicon glyphicon-cog"></i> &nbsp; Settings</a>
+                        <ul class="dropdown-menu">
+                            <li class="profile-li"><a class="profile-links" href="{% url 'profiles:get_profile' user.get_username %}"><i class="glyphicon glyphicon-user"></i> &nbsp; My profile</a></li>
+                            <li class="profile-li"><a class="profile-links" href="{% url 'profiles:logout' %}"><i class="glyphicon glyphicon-log-out"></i> &nbsp; Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="collapse navbar-collapse navHeaderCollapse">
-                    <ul class="nav navbar-nav navbar-right">
-                         <li class="active"><a href="#">Home</a></li>
-
-                          <li><a href="#">Blog</a></li>
-
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media</a>
-
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Twitter</a></li>
-
-                              <li><a href="#">Facebook</a></li>
-
-                              <li><a href="#">Google+</a></li>
-
-                              <li><a href="#">Instagram</a></li>
-                            </ul>
-                          </li>
-
-                          <li><a href="#">About</a></li>
-
-                          <li><a href="#">Contact</a></li>
-                    </ul>
+            <div class="row row2">
+                <div class="col-sm-2">
+                    <img style="margin:0px" class="smallnav menu" src="{% static 'images/logo.png' %}" alt="logo" width="170">
+                    <img style="margin:0px" class="largenav" src="{% static 'images/logo.png' %}" alt="logo" width="170">
                 </div>
+                <div class="flipkart-navbar-search smallsearch col-sm-8 col-xs-11">
+                    <div class="row">
+                        <form class="form-horizontal" action="/search" method="get">
+                            <input class="flipkart-navbar-input col-xs-11" name="q" placeholder="Search by address ..." >
+                            <button type="submitc" class="flipkart-navbar-button col-xs-1"><i class="glyphicon glyphicon-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <div class="container" style="background-color: #2874f0; padding-top: 10px;">
+            <span class="sidenav-heading">Home</span>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        </div>
+        <a href="http://clashhacks.in/">Link</a>
+        <a href="http://clashhacks.in/">Link</a>
+        <a href="http://clashhacks.in/">Link</a>
+        <a href="http://clashhacks.in/">Link</a>
+    </div>
 
     <div class="container">
          {% if message %}

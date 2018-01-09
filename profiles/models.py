@@ -21,3 +21,4 @@ class Profile(models.Model):
     passport_file = models.FileField()
     phone_number = models.CharField(max_length=20)
     description = models.CharField(max_length=200)
+    college = models.CharField(max_length=230)

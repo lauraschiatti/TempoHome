@@ -3,7 +3,6 @@ from . import views
 from .views import (
     RoomList,
     RoomDetail,
-    # RoomUpdate
     RoomDelete,
     RequestList,
     RequestUpdate

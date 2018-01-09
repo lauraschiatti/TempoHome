@@ -6,14 +6,18 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.core.urlresolvers import reverse_lazy
 from datetime import date
-from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from .models import Room, Picture, Request
 from .forms import RoomForm, PictureForm, RequestForm
 
+@login_required
 def dashboard(request):
     return render(request, 'accommodation/dashboard.html')
 
+
+@login_required
 def create_room(request):
     # formsets allow the user to store several pictures at once
     PicureFormSet = modelformset_factory(Picture, form=PictureForm)
@@ -43,6 +47,9 @@ def create_room(request):
 
     return render(request, 'accommodation/room_form.html', {'room_form': room_form, 'picture_formset': picture_formset})
 
+
+@method_decorator(login_required, name='dispatch')
+
 class RoomList(ListView):
    model = Room
 
@@ -50,16 +57,22 @@ class RoomList(ListView):
        user_rooms = Room.objects.filter(user=self.request.user)
        return user_rooms
 
+
+@method_decorator(login_required, name='dispatch')
 class RoomDetail(DetailView):
    model = Room
 
+
+@method_decorator(login_required, name='dispatch')
 class RoomDelete(DeleteView):
    model = Room
    success_url = reverse_lazy('accommodation:rooms_list')
 
+
 # global variables
 q = ''
 room_list = ''
+@login_required
 def search(request):
    # check that 'q' exists in request.GET
    if 'q' in request.GET:
@@ -74,6 +87,8 @@ def search(request):
 
    return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q})
 
+
+@login_required
 def post_request(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -100,6 +115,8 @@ def post_request(request):
         message = "Your request sent successfully. Room's owner will get in touch with you as soon as possible"
         return render(request, 'accommodation/search_results.html', {'room_list': room_list, 'q': q, 'message': message, 'request': new_request})
 
+
+@method_decorator(login_required, name='dispatch')
 class RequestList(ListView):
    model = Request
 
@@ -107,11 +124,14 @@ class RequestList(ListView):
        user_requests = Request.objects.filter(room__user=self.request.user)
        return user_requests
 
+
+@method_decorator(login_required, name='dispatch')
 class RequestUpdate(UpdateView):
    model = Request
    success_url = reverse_lazy('accommodation:requests_list')
    form_class = RequestForm
 
+@login_required
 def responses_list(request):
    user_responses = Request.objects.filter(user=request.user)
 

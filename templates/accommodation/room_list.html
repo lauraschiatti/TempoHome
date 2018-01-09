@@ -6,6 +6,56 @@
     <title>Rooms</title>
 {% endblock %}
 
+{% block nav %}
+    <ul class="nav">
+        <li>
+            <a href="{% url 'accommodation:dashboard' %}">
+                <i class="ti-panel"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="active">
+            <a href="{% url 'accommodation:rooms_list' %}">
+                <i class="glyphicon glyphicon-home"></i>
+                <p>My Rooms</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'accommodation:requests_list' %}">
+                <i class="glyphicon glyphicon-list"></i>
+                <p>My Requests</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'accommodation:responses_list' %}">
+                <i class="glyphicon glyphicon-bookmark"></i>
+                <p>My responses</p>
+            </a>
+        </li>
+        <li>
+            <hr>
+        </li>
+        <li>
+            <a href="{% url 'profiles:home' %}">
+                <i class="glyphicon glyphicon-home"></i>
+                <p>Home</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'profiles:get_profile' user.get_username %}">
+                <i class="glyphicon glyphicon-user"></i>
+                <p>Profile</p>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'profiles:logout' %}">
+                <i class="glyphicon glyphicon-log-out"></i>
+                <p>Logout</p>
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-12">
@@ -34,7 +84,6 @@
 
                                             <td>
                                                <a class="btn-link" href="{% url 'accommodation:room_detail' room.id %}"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                               <a class="btn-link" href="#"><i class="glyphicon glyphicon-pencil"></i></a>
                                                <a class="btn-link" href="{% url 'accommodation:room_delete' room.id %}"><i class="glyphicon glyphicon-trash"></i></a>
                                             </td>
                                         </tr>

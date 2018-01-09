@@ -22,6 +22,7 @@ class Request(models.Model):
     STATUS_CHOICES = (
         ('P', 'Pending'),
         ('A', 'Approved'),
+        ('R', 'Refused')
     )
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='P')
     comments = models.CharField(max_length=250, blank=True)

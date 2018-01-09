@@ -81,7 +81,7 @@
         <h1>Search Results</h1>
 
         {% if room_list %}
-            <h2 class="lead"><strong class="text-info">3</strong> results found for: <strong class="text-info">{{ q }}</strong></h2>
+            <h2 class="lead"><strong class="text-info">{{ room_list|length }} </strong> results found for: <strong class="text-info">{{ q }}</strong></h2>
 
             <section class="col-xs-12 col-sm-6 col-md-12">
                 {% for room in room_list %}

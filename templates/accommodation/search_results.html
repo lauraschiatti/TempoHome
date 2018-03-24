@@ -86,18 +86,35 @@
             <section class="col-xs-12 col-sm-6 col-md-12">
                 {% for room in room_list %}
                     <article class="search-result row">
-                        <div class="col-xs-12 col-sm-12 col-md-3">
-                            <a href="#" title="Lorem ipsum" class="thumbnail">
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                              <!-- Indicators -->
+                              <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                              </ol>
+
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner">
                                 {% for picture in room.picture_set.all %}
-                                    {% if forloop.first %}
-                                        <img src="{{ picture.picture.url }}" alt="picture" width="220">
-                                    {% endif %}
+                                  {% if forloop.first %}
+                                     <div class="item active">
+                                        <img src="{{ picture.picture.url }}" alt="picture" style="max-width:300px;">
+                                     </div>
+                                  {% else %}
+                                     <div class="item">
+                                        <img src="{{ picture.picture.url }}" alt="picture" style="max-width:300px;">
+                                     </div>
+                                  {% endif %}
                                 {% endfor %}
-                            </a>
+                              </div>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                            <h3><a href="#" title="">{{ room.address }}</a></h3>
-                            <p>{{ room.description }}</p>
+                            <h3 class="text-primary">{{ room.address }}</h3>
+                            <p><strong>Description:</strong> {{ room.description }}</p>
+                            <p><strong>Rules:</strong> {{ room.rules }}</p>
 
                             <br>
                             <div class="request">

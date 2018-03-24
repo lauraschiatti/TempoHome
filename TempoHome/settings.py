@@ -130,5 +130,5 @@ STATIC_URL = '/static/'
 
 # Files to be uploaded
 
-MEDIA_ROOT = 'media' # folder to get uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # folder to get uploaded files
 MEDIA_URL = '/media/' # url to get files
